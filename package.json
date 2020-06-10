@@ -4,7 +4,7 @@
   "description": "Quiz app with dynamic questions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d app"
   },
   "repository": {
     "type": "git",
