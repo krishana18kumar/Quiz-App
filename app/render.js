@@ -28,7 +28,6 @@ let availableQuestions = [];
 // for starting the quiz
 startbtn.addEventListener("click", () => {
     // console.log("start btn clicked");
-    console.log(amount.value);
     startPage.classList.add("display");
     loader.classList.remove("display");
     fetchQuestions();
@@ -45,7 +44,6 @@ playAgainbtn.addEventListener("click", () => {
 
 
 homebtn.addEventListener("click", () => {
-    fetchQuestions();
     // console.log("home btn clicked");
     startPage.classList.remove("display");
     quizPage.classList.add("display");
