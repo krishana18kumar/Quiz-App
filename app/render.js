@@ -60,6 +60,7 @@ fetchQuestions = () => {
         })
         .then(loadedQuestions => {
             questions = loadedQuestions.results.map(loadedQuestion => {
+                decodedQuestion = decodeQuestion(loadedQuestion.question);
                 const formattedQuestion = {
                     question: loadedQuestion.question
                 };
@@ -166,3 +167,9 @@ choices.forEach(choice => {
 
     });
 });
+//decoding Question
+decodeQuestion = html => {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value
+}
