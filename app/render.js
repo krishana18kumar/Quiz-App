@@ -60,8 +60,9 @@ fetchQuestions = () => {
         })
         .then(loadedQuestions => {
             questions = loadedQuestions.results.map(loadedQuestion => {
+                decodedQuestion = decodeQuestion(loadedQuestion.question);
                 const formattedQuestion = {
-                    question: loadedQuestion.question
+                    question: decodedQuestion
                 };
                 const answerChoices = [...loadedQuestion.incorrect_answers];
                 formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
@@ -71,6 +72,7 @@ fetchQuestions = () => {
                 }
                 return formattedQuestion;
             });
+
             maxQuestions = questions.length;
             startGame();
         })
@@ -166,3 +168,10 @@ choices.forEach(choice => {
 
     });
 });
+
+//decoding Question
+decodeQuestion = html => {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value
+}
