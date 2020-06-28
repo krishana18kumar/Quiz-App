@@ -175,18 +175,6 @@ choices.forEach(choice => {
 
     });
 });
-<<<<<<< HEAD
-
-// onclick function executing on next button
-nextQuestion = () => {
-    setTimeout(() => {
-        // selectedChoice.classList.remove(classToApply);
-        getNewQuestion();
-        console.log(questionCounter);
-    }, 500);
-}
-=======
->>>>>>> 70e58dbea0ef15fa5defb03fc89c7bfe3e9239f5
 //decoding Question
 decodeQuestion = html => {
     var txt = document.createElement("textarea");
