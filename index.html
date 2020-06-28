@@ -84,6 +84,9 @@
                     <li class="item" data-number="4"></li>
                 </ul>
             </div>
+            <button onclick="nextQuestion()" id="nextBtn">
+                <h3>Next</h3>
+            </button>
         </div>
 
         <!-- Display the result -->
@@ -92,6 +95,13 @@
             <h2 id="score_text"></h2>
             <input class="button" type="submit" value="Play Again" id="playAgainBtn" />
             <input class="button" type="submit" value="Home" id="homeBtn" />
+        </div>
+
+        <!-- Dispaly error if any  -->
+        <div id="error_area" class="display">
+            <h2>Please try less number of question or try a different category</h2>
+            <input class="button" type="submit" value="Try Again" id="tryAgainBtn" />
+
         </div>
     </div>
 </body>
