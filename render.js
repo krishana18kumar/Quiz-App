@@ -171,13 +171,20 @@ choices.forEach(choice => {
                 selectedChoice.classList.add(classToApply);
             }
         }
-        // nextBtn.addEventListener("onclick", () => {
-
     });
 });
+
+// onclick function executing on next button
+nextQuestion = () => {
+    setTimeout(() => {
+        // selectedChoice.classList.remove(classToApply);
+        getNewQuestion();
+        console.log(questionCounter);
+    }, 500);
+};
 //decoding Question
 decodeQuestion = html => {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value
-}
+};
