@@ -72,7 +72,6 @@ fetchQuestions = () => {
                 }
                 return formattedQuestion;
             });
-
             maxQuestions = questions.length;
             startGame();
         })
@@ -168,7 +167,6 @@ choices.forEach(choice => {
 
     });
 });
-
 //decoding Question
 decodeQuestion = html => {
     var txt = document.createElement("textarea");
