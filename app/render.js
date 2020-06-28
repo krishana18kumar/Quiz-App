@@ -1,12 +1,15 @@
 const startbtn = document.querySelector("#startBtn");
 const playAgainbtn = document.querySelector("#playAgainBtn");
+const tryAgainbtn = document.querySelector("#tryAgainBtn");
 const homebtn = document.querySelector("#homeBtn");
+const nextBtn = document.querySelector("#nextBtn");
 const question = document.getElementById("question");
 const choices = Array.from(document.querySelectorAll("li"));
 const startPage = document.querySelector("#select_area");
 const loader = document.querySelector("#load_area");
 const quizPage = document.querySelector("#quiz_area");
 const resultPage = document.querySelector("#result_area");
+const errorPage = document.querySelector("#error_area");
 let questionCounterText = document.querySelector("#question_counter_text")
 let scoreText = document.querySelector("#score_text");
 
@@ -25,17 +28,20 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// startbtn.disabled = true;
 // for starting the quiz
 startbtn.addEventListener("click", () => {
-    // console.log("start btn clicked");
     startPage.classList.add("display");
     loader.classList.remove("display");
     fetchQuestions();
 });
-
+//try again if error any 
+tryAgainbtn.addEventListener("click", () => {
+    startPage.classList.remove("display");
+    errorPage.classList.add("display");
+})
 // to play again the quiz
 playAgainbtn.addEventListener("click", () => {
-    // console.log("PlayAgain btn clicked");
     startPage.classList.add("display");
     quizPage.classList.remove("display");
     resultPage.classList.add("display");
@@ -44,7 +50,6 @@ playAgainbtn.addEventListener("click", () => {
 
 
 homebtn.addEventListener("click", () => {
-    // console.log("home btn clicked");
     startPage.classList.remove("display");
     quizPage.classList.add("display");
     resultPage.classList.add("display");
@@ -72,8 +77,15 @@ fetchQuestions = () => {
                 }
                 return formattedQuestion;
             });
+
             maxQuestions = questions.length;
-            startGame();
+            if (maxQuestions < amount.value) {
+                //DISPLAY ERROR MESSAGE 
+                loader.classList.add("display");
+                errorPage.classList.remove("display");
+            } else {
+                startGame();
+            }
         })
         .catch(err => {
             console.log(err);
@@ -104,7 +116,7 @@ getNewQuestion = () => {
         scoreText.innerText = `${score} Out of ${maxQuestions*10}`;
         return;
     }
-    questionCounter++;
+    questionCounter += 1;
     questionCounterText.innerText = `Question: ${questionCounter}/${maxQuestions}`;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -160,16 +172,22 @@ choices.forEach(choice => {
                 selectedChoice.classList.add(classToApply);
             }
         }
-        setTimeout(() => {
-            selectedChoice.classList.remove(classToApply);
-            getNewQuestion();
-        }, 1000);
+        // nextBtn.addEventListener("onclick", () => {
 
     });
 });
+
+// onclick function executing on next button
+nextQuestion = () => {
+    setTimeout(() => {
+        // selectedChoice.classList.remove(classToApply);
+        getNewQuestion();
+        console.log(questionCounter);
+    }, 500);
+};
 //decoding Question
 decodeQuestion = html => {
     var txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value
-}
+};
