@@ -62,7 +62,7 @@ fetchQuestions = () => {
             questions = loadedQuestions.results.map(loadedQuestion => {
                 decodedQuestion = decodeQuestion(loadedQuestion.question);
                 const formattedQuestion = {
-                    question: loadedQuestion.question
+                    question: decodedQuestion
                 };
                 const answerChoices = [...loadedQuestion.incorrect_answers];
                 formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
