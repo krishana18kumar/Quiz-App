@@ -77,7 +77,6 @@ fetchQuestions = () => {
                 }
                 return formattedQuestion;
             });
-
             maxQuestions = questions.length;
             if (maxQuestions < amount.value) {
                 //DISPLAY ERROR MESSAGE 
@@ -176,6 +175,7 @@ choices.forEach(choice => {
 
     });
 });
+<<<<<<< HEAD
 
 // onclick function executing on next button
 nextQuestion = () => {
@@ -185,6 +185,8 @@ nextQuestion = () => {
         console.log(questionCounter);
     }, 500);
 }
+=======
+>>>>>>> 70e58dbea0ef15fa5defb03fc89c7bfe3e9239f5
 //decoding Question
 decodeQuestion = html => {
     var txt = document.createElement("textarea");
